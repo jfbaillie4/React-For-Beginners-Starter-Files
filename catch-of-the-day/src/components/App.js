@@ -6,6 +6,11 @@ import Order from './Order';
 import sampleFishes from '../sample-fishes'
 import Fish from "./Fish";
 import base from "../base";
+//import perf from "../base";
+
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-000000-01');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 class App extends React.Component {
     state = {

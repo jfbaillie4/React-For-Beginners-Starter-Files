@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import "firebase/auth";
 import AddFishForm from './AddFishForm';
 import EditFishForm from './EditFishForm';
 import Login from "./Login";
@@ -52,7 +53,7 @@ class Inventory extends React.Component {
             .signInWithPopup(authProvider)
             .then(this.authHandler)
             .catch( error => {
-                if (error.code == 'auth/account-exists-with-different-credential') {
+                if (error.code === 'auth/account-exists-with-different-credential') {
                        const nonGoogleCred = error.credential;
                        var googleProvider = new firebase.auth.GoogleAuthProvider();
                        googleProvider.setCustomParameters({'login_hint': error.email});

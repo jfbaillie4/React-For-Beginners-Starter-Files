@@ -601,11 +601,11 @@ input[type=submit].facebook:after {
 }
 button.twitter,
 input[type=submit].twitter {
-  background: #df3232;
+  background: #5ea9dd;
 }
 button.twitter:after,
 input[type=submit].twitter:after {
-  background: #b32727;
+  background: #2c8dd0;
 }
 .store-selector {
   background: #fff;
