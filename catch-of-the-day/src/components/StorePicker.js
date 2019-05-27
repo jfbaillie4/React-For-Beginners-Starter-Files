@@ -1,6 +1,8 @@
 import React from 'react';
 import { getFunName } from "../helpers";
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
+import { logPageView } from "../tracking";
+import { initGA } from "../tracking";
 
 class StorePicker extends React.Component {
     
@@ -20,6 +22,11 @@ class StorePicker extends React.Component {
         this.props.history.push(`/store/${storeName}`);
     };
     
+    componentDidMount() {
+        initGA();
+        logPageView();
+    };
+
     render() {
         return (
         <form className="store-selector" onSubmit={this.goToStore}>

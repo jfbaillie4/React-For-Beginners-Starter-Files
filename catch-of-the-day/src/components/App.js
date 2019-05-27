@@ -5,12 +5,9 @@ import Inventory from './Inventory';
 import Order from './Order';
 import sampleFishes from '../sample-fishes'
 import Fish from "./Fish";
-import base from "../base";
-//import perf from "../base";
+import base from "../base"
+import { logPageView, logEvent, initGA } from "../tracking";
 
-import ReactGA from 'react-ga';
-ReactGA.initialize('UA-000000-01');
-ReactGA.pageview(window.location.pathname + window.location.search);
 
 class App extends React.Component {
     state = {
@@ -32,6 +29,9 @@ class App extends React.Component {
             context: this,
             state: 'fishes'
         });
+        initGA();
+        logPageView();
+        logEvent({category: 'Loads', action: 'App Load', label: this.props.match.params.storeId})
     };
 
     componentDidUpdate() {
@@ -76,6 +76,7 @@ class App extends React.Component {
 
     loadSampleFishes = () => {
         this.setState({ fishes: sampleFishes })
+        logEvent({category: 'Admin Actions', action: 'Load Sample Fish', label: this.props.match.params.storeId})
     };
 
     addToOrder = (key) => {
@@ -123,6 +124,7 @@ class App extends React.Component {
                     storeID={this.props.match.params.storeId}
                 />
             </div>
+        
         )
     }
 }

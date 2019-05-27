@@ -68,25 +68,26 @@ class Inventory extends React.Component {
     };
 
     logout = async () => {
-        console.log('loggin out!');
         await firebase.auth().signOut();
         this.setState({ uid: null });
     };
 
     render() {
         const logout = <button onClick={this.logout}>Log Out</button>
-
         // 1. Check if they are logged in.
         if (!this.state.uid) {
-            return <Login authenticate={this.authenticate} />
+            this.view = "Login Presented"
+            return <Login authenticate={this.authenticate} />;
         }
         // 2. check if they are not the owner of the store
         if (this.state.uid !== this.state.owner) {
+            this.view = "Not Owner";
             return <div>
                 <p>Sorry you are not the owner!</p>
                 {logout}
             </div>
         }
+        this.view = 'Inventory Shown';
         //3. They must be the owner, just render the inventtory
         return (
              <div className="inventory">
