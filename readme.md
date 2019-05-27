@@ -1,3 +1,10 @@
+# James's notes
+
+Outcome of the "Catch of the Day" code-along project from Wes Bos's React for beginners. Added some additional work on Google login (merging accounts when multiple social logins use), tracking (react-ga) and to deploy using Firebase. 
+
+Can be found at https://catch-of-the-day-james-b.firebaseapp.com/.
+
+
 ![](http://wes.io/dgAQ/content)
 
 # React For Beginners — [ReactForBeginners.com](https://ReactForBeginners.com)
